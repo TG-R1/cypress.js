@@ -5,14 +5,14 @@ describe('[Тестирование] Aвторизации', function () {
     // INPUT email/password
     it('[Авторизация] валидные данные', function () {
 
-        cy.visit('https://login.qa.studio/');
-        cy.get("#mail").type("german@dolnikov.ru");
-        cy.get("#pass").type("iLoveqastudio1");
-        cy.get("#loginButton").click();
-        cy.get("#messageHeader").contains("Авторизация прошла успешно").should("be.visible");
+        cy.visit('{{ URL }}');
+        cy.get("{{ Элелемент }}").type("{{значение}}");
+        cy.get("{{ Элелемент }}").type("{{значение}}");
+        cy.get("{{ Элелемент }}").click();
+        cy.get("{{ Элелемент }}").contains("{{ Текст }}").should("be.visible");
         cy.wait(2000);
-        cy.get("#exitMessageButton > .exitIcon").click();
-        cy.get("#form > .header").contains("Форма логина").should("be.visible");
+        cy.get("{{ Элелемент }}").click();
+        cy.get("{{ Элелемент }}").contains("{{ Текст }}").should("be.visible");
         cy.clearCookies();
 
         })
@@ -23,39 +23,39 @@ describe('[Тестирование] Aвторизации', function () {
     // INVALID EMAIL other
     it("[Авторизация] Нeправильный e-mail", function(){
         // Невалидный e-mail
-        cy.visit("https://login.qa.studio/");
-        cy.get("#mail").should("be.empty").type("good@gmail.com");
-        cy.get("#pass").type("iLoveqastudio1");
-        cy.get("#loginButton").click();
-        cy.get("#messageHeader").contains("Такого логина или пароля нет");
+        cy.visit("{{ Элелемент }}");
+        cy.get("{{ Элелемент }}").should("be.empty").type("{{ Элелемент }}");
+        cy.get("{{ Элелемент }}").type("{{ Элелемент }}");
+        cy.get("{{ Элелемент }}").click();
+        cy.get("{{ Элелемент }}").contains("{{ Элелемент }}");
         cy.wait(2000);
-        cy.get("#exitMessageButton > .exitIcon").click();
+        cy.get("{{ Элелемент }}").click();
         cy.clearCookies() //Чистим    куки
-        cy.get("#form > .header").contains("Форма логина").should("be.visible");
+        cy.get("{{ Элелемент }}").contains("{{ Элелемент }}").should("be.visible");
     })
 
     // INVALID EMAIL no @
     it("[Авторизация] E-mail без @", function(){
         // Невалидный e-mail без @
-        cy.visit("https://login.qa.studio/");
-        cy.get("#mail").should("be.empty").type("good.gmail.com");
-        cy.get("#pass").type("iLoveqastudio1");
-        cy.get("#loginButton").click();
-        cy.get("#messageHeader").contains("Нужно исправить проблему валидации");
+        cy.visit("{{ Элелемент }}")
+        cy.get("{{ Элелемент }}").should("be.empty").type("{{ Элелемент }}");
+        cy.get("{{ Элелемент }}").type("{{ Элелемент }}");
+        cy.get("{{ Элелемент }}").click();
+        cy.get("{{ Элелемент }}").contains("{{ Элелемент }}");
         cy.wait(2000);
-        cy.get("#exitMessageButton > .exitIcon").click();
+        cy.get("{{ Элелемент }}").click();
         cy.clearCookies() //Чистим    куки
-        cy.get("#form > .header").contains("Форма логина").should("be.visible");
+        cy.get("{{ Элелемент }}").contains("{{ Элелемент }}").should("be.visible");
     })
     
     // INVALID EMAIL only number
     it("[Авторизация] E-mail цифры", function(){
         
-        cy.visit("https://login.qa.studio/");
-        cy.get("#mail").should("be.empty").type("111111111111111111");
-        cy.get("#pass").type("iLoveqastudio1");
-        cy.get("#loginButton").click();
-        cy.get("#messageHeader").contains("Нужно исправить проблему валидации");
+        cy.visit("{{ Элелемент }}");
+        cy.get("{{ Элелемент }}").should("be.empty").type("111111111111111111");
+        cy.get("{{ Элелемент }}").type("{{ Элелемент }}");
+        cy.get("{{ Элелемент }}").click();
+        cy.get("{{ Элелемент }}").contains("Нужно исправить проблему валидации");
         cy.wait(2000);
         cy.get("#exitMessageButton > .exitIcon").click();
         cy.clearCookies() //Чистим    куки
@@ -65,8 +65,8 @@ describe('[Тестирование] Aвторизации', function () {
      // INVALID EMAIL special symbols
      it("[Авторизация] E-mail спец. символы", function(){
         
-        cy.visit("https://login.qa.studio/");
-        cy.get("#mail").should("be.empty").type("!@#$%^&*()");
+        cy.visit("{{ Элелемент }}");
+        cy.get("{{ Элелемент }}").should("be.empty").type("!@#$%^&*()");
         cy.get("#pass").type("iLoveqastudio1");
         cy.get("#loginButton").click();
         cy.get("#messageHeader").contains("Нужно исправить проблему валидации");
@@ -79,15 +79,15 @@ describe('[Тестирование] Aвторизации', function () {
     // INVALID EMAIL Up and low register
     it("[Авторизация] E-mail разный регистр ", function(){
         
-        cy.visit("https://login.qa.studio/");
-        cy.get("#mail").should("be.empty").type("GerMan@Dolnikov.ru");
-        cy.get("#pass").type("iLoveqastudio1");
-        cy.get("#loginButton").click();
-        cy.get("#messageHeader").contains("Нужно исправить проблему валидации");
+        cy.visit("{{ Элелемент }}");
+        cy.get("{{ Элелемент }}").should("be.empty").type("{{ Элелемент }}");
+        cy.get("{{ Элелемент }}").type("{{ Элелемент }}");
+        cy.get("{{ Элелемент }}").click();
+        cy.get("{{ Элелемент }}").contains("{{ Элелемент }}");
         cy.wait(2000);
-        cy.get("#exitMessageButton > .exitIcon").click();
+        cy.get("{{ Элелемент }}").click();
         cy.clearCookies() //Чистим    куки
-        cy.get("#form > .header").contains("Форма логина").should("be.visible");
+        cy.get("{{ Элелемент }}").contains("{{ Элелемент }}").should("be.visible");
     })
 
 
